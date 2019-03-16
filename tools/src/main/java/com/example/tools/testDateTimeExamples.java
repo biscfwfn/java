@@ -19,6 +19,9 @@ public class testDateTimeExamples {
         log(tr.getStartTime().toLocalDate().toString());
         log("两个时间段内的天数："+ Moment.getDateRangeDaysNum(tr.getStartTime().toLocalDate(),tr.getEndTime().toLocalDate()));
         log("两个时间之间的周数："+Moment.getDateRangeWeekNum(LocalDateTime.now().plusDays(-15).toLocalDate(),tr.getStartTime().toLocalDate()).toString());
+        log("两个时间之间的月数："+Moment.getDateRangeMonthNum(LocalDateTime.now().plusDays(-55).toLocalDate(),LocalDateTime.now().toLocalDate()).toString());
+        log("两个时间之间的季度数："+Moment.getDateRangeQuarterNum(LocalDateTime.now().plusDays(-400).toLocalDate(),LocalDateTime.now().toLocalDate()).toString());
+        log("两个时间之间的年数："+Moment.getDateRangeYearNum(LocalDateTime.now().plusDays(-500).toLocalDate(),LocalDateTime.now().toLocalDate()).toString());
     }
     private static void log(Object str){
         System.out.println(str);

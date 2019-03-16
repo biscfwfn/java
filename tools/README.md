@@ -7,9 +7,12 @@
         getDateRangeDaysNum(LocalDate startDate,LocalDate endDate);
     3. 计算两个日期之间的周数
         getDateRangeWeekNum(LocalDate startDate,LocalDate endDate);
-    4. 
-    5. 
-    6. 
+    4. 计算两个日期之间的月数
+        getDateRangeMonthNum(LocalDate startDate,LocalDate endDate);
+    5. 计算两个日期之间的季度数
+        getDateRangeQuarterNum(LocalDate startDate,LocalDate endDate)
+    6. 计算两个日期之间的年数
+        getDateRangeYearNum(LocalDate startDate,LocalDate endDate)
     7. 
     8. 
     9. 

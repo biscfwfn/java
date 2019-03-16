@@ -24,9 +24,9 @@ public class Moment {
         if(TimeUnitsEnum.TODAY.value().equals(unit)){
             t.setStartTime(LocalDateTime.of(LocalDate.now(), LocalTime.MIN));
         }else if(TimeUnitsEnum.THIS_WEEK.value().equals(unit)){
-            t.setStartTime(LocalDateTime.of(LocalDate.now().plusDays(0-LocalDate.now().getDayOfWeek().getValue()+1), LocalTime.MIN));
+            t.setStartTime(LocalDateTime.of(LocalDate.now().plusDays(-LocalDate.now().getDayOfWeek().getValue()+1), LocalTime.MIN));
         }else if(TimeUnitsEnum.THIS_MONTH.value().equals(unit)){
-            t.setStartTime(LocalDateTime.of(LocalDate.now().plusDays(0-LocalDate.now().getDayOfMonth()+1), LocalTime.MIN));
+            t.setStartTime(LocalDateTime.of(LocalDate.now().plusDays(-LocalDate.now().getDayOfMonth()+1), LocalTime.MIN));
         }else if(TimeUnitsEnum.THIS_QUARTER.value().equals(unit)){
             int m = LocalDate.now().getMonthValue();
             if(m % 3 == 0){
@@ -36,9 +36,9 @@ public class Moment {
             }else{
                 m=0;
             }
-            t.setStartTime(LocalDateTime.of(LocalDate.now().plusDays(0-LocalDate.now().getDayOfMonth()+1).plusMonths(m), LocalTime.MIN));
+            t.setStartTime(LocalDateTime.of(LocalDate.now().plusDays(-LocalDate.now().getDayOfMonth()+1).plusMonths(m), LocalTime.MIN));
         }else if(TimeUnitsEnum.THIS_YEAR.value().equals(unit)){
-            t.setStartTime(LocalDateTime.of(LocalDate.now().plusDays(0-LocalDate.now().getDayOfYear()+1), LocalTime.MIN));
+            t.setStartTime(LocalDateTime.of(LocalDate.now().plusDays(-LocalDate.now().getDayOfYear()+1), LocalTime.MIN));
         }else{
             t.setStartTime(LocalDateTime.of(LocalDate.now(), LocalTime.MIN));
         }
@@ -57,8 +57,8 @@ public class Moment {
 
     /**
      * 计算两个日期之间的周数
-     * @param startDate 开始时间
-     * @param endDate   结束时间
+     * @param startDate 开始日期
+     * @param endDate   结束日期
      * @return  周数，第一周开始时间，结束时间
      */
     public static DateUnitsNumEntity getDateRangeWeekNum(LocalDate startDate,LocalDate endDate){
@@ -67,6 +67,69 @@ public class Moment {
         t.setEndTime(LocalDateTime.of(endDate,LocalTime.MAX));
         for(int i=0;startDate.plusDays(i).isBefore(endDate) || startDate.plusDays(i).isEqual(endDate);i++){
             if(startDate.plusDays(i).getDayOfWeek().equals(DayOfWeek.MONDAY)){
+                if(t.getDateNum() == 0){
+                    t.setStartTime(LocalDateTime.of(startDate.plusDays(i),LocalTime.MIN));
+                }
+                t.setDateNum(t.getDateNum()+1);
+            }
+        }
+        return t;
+    }
+
+    /**
+     * 计算两个日期之间的月数
+     * @param startDate 开始日期
+     * @param endDate   结束日期
+     * @return
+     */
+    public static DateUnitsNumEntity getDateRangeMonthNum(LocalDate startDate,LocalDate endDate){
+        DateUnitsNumEntity t = new DateUnitsNumEntity();
+        t.setDateNum(0);
+        t.setEndTime(LocalDateTime.of(endDate,LocalTime.MAX));
+        for(int i=0;startDate.plusDays(i).isBefore(endDate) || startDate.plusDays(i).isEqual(endDate);i++){
+            if(startDate.plusDays(i).getDayOfMonth() == 1){
+                if(t.getDateNum() == 0){
+                    t.setStartTime(LocalDateTime.of(startDate.plusDays(i),LocalTime.MIN));
+                }
+                t.setDateNum(t.getDateNum()+1);
+            }
+        }
+        return t;
+    }
+
+    /**
+     * 计算两个日期之间的季度数
+     * @param startDate 开始日期
+     * @param endDate   结束日期
+     * @return
+     */
+    public static DateUnitsNumEntity getDateRangeQuarterNum(LocalDate startDate,LocalDate endDate){
+        DateUnitsNumEntity t = new DateUnitsNumEntity();
+        t.setDateNum(0);
+        t.setEndTime(LocalDateTime.of(endDate,LocalTime.MAX));
+        for(int i=0;startDate.plusDays(i).isBefore(endDate) || startDate.plusDays(i).isEqual(endDate);i++){
+            if(startDate.plusDays(i).getDayOfMonth() == 1 && (startDate.plusDays(i).getMonthValue()-1)%3 ==0){
+                if(t.getDateNum() == 0){
+                    t.setStartTime(LocalDateTime.of(startDate.plusDays(i),LocalTime.MIN));
+                }
+                t.setDateNum(t.getDateNum()+1);
+            }
+        }
+        return t;
+    }
+
+    /**
+     * 计算两个日期之间的年数
+     * @param startDate 开始日期
+     * @param endDate   结束日期
+     * @return
+     */
+    public static DateUnitsNumEntity getDateRangeYearNum(LocalDate startDate,LocalDate endDate){
+        DateUnitsNumEntity t = new DateUnitsNumEntity();
+        t.setDateNum(0);
+        t.setEndTime(LocalDateTime.of(endDate,LocalTime.MAX));
+        for(int i=0;startDate.plusDays(i).isBefore(endDate) || startDate.plusDays(i).isEqual(endDate);i++){
+            if(startDate.plusDays(i).getDayOfYear() == 1){
                 if(t.getDateNum() == 0){
                     t.setStartTime(LocalDateTime.of(startDate.plusDays(i),LocalTime.MIN));
                 }
