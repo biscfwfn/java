@@ -1,8 +1,10 @@
 package com.example.tools.dateTime;
 
+import com.example.tools.entity.DateUnitsNumEntity;
 import com.example.tools.entity.TimeRangeEntity;
 import com.example.tools.enums.TimeUnitsEnum;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -16,7 +18,7 @@ public class Moment {
      * @param unit 时间单位
      * @return { 开始时间，结束时间 }
      */
-    public static TimeRangeEntity getTimeRange(String unit){
+    public static TimeRangeEntity getTimeUnitsRange(String unit){
         TimeRangeEntity t = new TimeRangeEntity();
         t.setEndTime(LocalDateTime.of(LocalDate.now(), LocalTime.MAX));
         if(TimeUnitsEnum.TODAY.value().equals(unit)){
@@ -51,5 +53,26 @@ public class Moment {
      */
     public static int getDateRangeDaysNum(LocalDate startDate,LocalDate endDate){
         return Math.toIntExact(endDate.toEpochDay() - startDate.toEpochDay() + 1);
+    }
+
+    /**
+     * 计算两个日期之间的周数
+     * @param startDate 开始时间
+     * @param endDate   结束时间
+     * @return  周数，第一周开始时间，结束时间
+     */
+    public static DateUnitsNumEntity getDateRangeWeekNum(LocalDate startDate,LocalDate endDate){
+        DateUnitsNumEntity t = new DateUnitsNumEntity();
+        t.setDateNum(0);
+        t.setEndTime(LocalDateTime.of(endDate,LocalTime.MAX));
+        for(int i=0;startDate.plusDays(i).isBefore(endDate) || startDate.plusDays(i).isEqual(endDate);i++){
+            if(startDate.plusDays(i).getDayOfWeek().equals(DayOfWeek.MONDAY)){
+                if(t.getDateNum() == 0){
+                    t.setStartTime(LocalDateTime.of(startDate.plusDays(i),LocalTime.MIN));
+                }
+                t.setDateNum(t.getDateNum()+1);
+            }
+        }
+        return t;
     }
 }
