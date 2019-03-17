@@ -1,9 +1,12 @@
 package com.example.tools;
 
 import com.example.tools.dateTime.Moment;
+import com.example.tools.entity.GLatLngEntity;
 import com.example.tools.entity.TimeRangeEntity;
 import com.example.tools.enums.TimeUnitsEnum;
+import com.example.tools.map.Gis;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 
@@ -22,6 +25,15 @@ public class testDateTimeExamples {
         log("两个时间之间的月数："+Moment.getDateRangeMonthNum(LocalDateTime.now().plusDays(-55).toLocalDate(),LocalDateTime.now().toLocalDate()).toString());
         log("两个时间之间的季度数："+Moment.getDateRangeQuarterNum(LocalDateTime.now().plusDays(-400).toLocalDate(),LocalDateTime.now().toLocalDate()).toString());
         log("两个时间之间的年数："+Moment.getDateRangeYearNum(LocalDateTime.now().plusDays(-500).toLocalDate(),LocalDateTime.now().toLocalDate()).toString());
+        log("==============================================================================");
+        GLatLngEntity n1 = new GLatLngEntity();
+        n1.setLongitude(BigDecimal.valueOf(116.402212));
+        n1.setLatitude(BigDecimal.valueOf(39.913697));
+        GLatLngEntity n2 = new GLatLngEntity();
+        n2.setLongitude(BigDecimal.valueOf(116.405764));
+        n2.setLatitude(BigDecimal.valueOf(39.913825));
+        log("坐标点之间的距离："+Gis.getDistance(n1.getLongitude().doubleValue(),n1.getLatitude().doubleValue(),n2.getLongitude().doubleValue(),n2.getLatitude().doubleValue()));
+
     }
     private static void log(Object str){
         System.out.println(str);

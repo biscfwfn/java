@@ -1,5 +1,8 @@
 package com.example.tools.entity;
 
+/**
+ * 两个时间段之间多少个时间单位
+ */
 public class DateUnitsNumEntity extends TimeRangeEntity{
     private Integer DateNum;
 
