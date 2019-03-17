@@ -16,3 +16,6 @@
     7. 
     8. 
     9. 
+>>## 一. 地图工具类
+    1、获取两个经纬度之间的距离
+        getGLtLngDistance(GLatLngEntity g1, GLatLngEntity g2);

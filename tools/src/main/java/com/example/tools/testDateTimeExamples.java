@@ -32,7 +32,7 @@ public class testDateTimeExamples {
         GLatLngEntity n2 = new GLatLngEntity();
         n2.setLongitude(BigDecimal.valueOf(116.405764));
         n2.setLatitude(BigDecimal.valueOf(39.913825));
-        log("坐标点之间的距离："+Gis.getDistance(n1.getLongitude().doubleValue(),n1.getLatitude().doubleValue(),n2.getLongitude().doubleValue(),n2.getLatitude().doubleValue()));
+        log("坐标点之间的距离："+Gis.getGLtLngDistance(n1,n2));
 
     }
     private static void log(Object str){

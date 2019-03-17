@@ -1,5 +1,7 @@
 package com.example.tools.map;
 
+import com.example.tools.entity.GLatLngEntity;
+
 import java.math.BigDecimal;
 
 public class Gis {
@@ -11,19 +13,17 @@ public class Gis {
     /**
      * 根据经纬度，计算两点间的距离
      *
-     * @param longitude1 第一个点的经度
-     * @param latitude1  第一个点的纬度
-     * @param longitude2 第二个点的经度
-     * @param latitude2  第二个点的纬度
+     * @param g1 第一个点的经度
+     * @param g2 第二个点的经度
      * @return 返回距离 单位千米
      */
-    public static double getDistance(double longitude1, double latitude1, double longitude2, double latitude2) {
-        // 纬度
-        double lat1 = Math.toRadians(latitude1);
-        double lat2 = Math.toRadians(latitude2);
+    public static double getGLtLngDistance(GLatLngEntity g1, GLatLngEntity g2) {
         // 经度
-        double lng1 = Math.toRadians(longitude1);
-        double lng2 = Math.toRadians(longitude2);
+        double lng1 = Math.toRadians(g1.getLongitude().doubleValue());
+        double lng2 = Math.toRadians(g2.getLongitude().doubleValue());
+        // 纬度
+        double lat1 = Math.toRadians(g1.getLatitude().doubleValue());
+        double lat2 = Math.toRadians(g2.getLatitude().doubleValue());
         // 纬度之差
         double a = lat1 - lat2;
         // 经度之差
