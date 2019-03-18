@@ -1,0 +1,18 @@
+server:
+  port: 8088
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@47.92.209.91:1521/XE
+    username: profjshzz
+    password: 123asd
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+  devtools:
+#    LiveReload服务器
+    livereload:
+      enabled: false
+mybatis:
+#  configuration:
+#    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+logging:
+  config: classpath:log4j2.xml
