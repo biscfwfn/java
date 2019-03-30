@@ -16,4 +16,11 @@ public class Java8notes {
     private static void log(Object s){
         System.out.println(s);
     }
+<<<<<<< HEAD
+    private static void log(Object s){
+        System.err.println(s);
+    }
 }
+=======
+}
+>>>>>>> b24e51ece8718751c7d223d21fdc9db7be781e9e
