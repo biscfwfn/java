@@ -1,13 +1,26 @@
 package java8notes;
-
 public class Java8notes {
     public static void main(String[] args) {
-        boolean f = false;
-        if(!f){
-            log(f);
+        Integer[] l = new Integer[10];
+        for(int i=1;i<11;i++){
+            l[i-1] = i;
+        }
+        Stack s = new Stack();
+        for(int v:l){
+            s.push(v);
+        }
+        for(int i=1;i<11;i++){
+            log(s.pop());
         }
     }
+    private static void log(Object s){
+        System.out.println(s);
+    }
+<<<<<<< HEAD
     private static void log(Object s){
         System.err.println(s);
     }
 }
+=======
+}
+>>>>>>> b24e51ece8718751c7d223d21fdc9db7be781e9e
