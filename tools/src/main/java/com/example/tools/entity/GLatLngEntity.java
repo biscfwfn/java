@@ -3,7 +3,7 @@ package com.example.tools.entity;
 import java.math.BigDecimal;
 
 /**
- * 经纬度坐标
+ * 经纬度坐标实体类
  */
 public class GLatLngEntity {
     /**

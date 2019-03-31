@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 /**
- * 时间段
+ * 时间段实体类
  */
 public class TimeRangeEntity {
     /** 开始时间 */

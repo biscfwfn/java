@@ -16,7 +16,4 @@ public class Java8notes {
     private static void log(Object s){
         System.out.println(s);
     }
-    private static void log(Object s){
-        System.err.println(s);
-    }
 }

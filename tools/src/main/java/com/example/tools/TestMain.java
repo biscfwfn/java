@@ -18,15 +18,6 @@ public class TestMain {
         list.stream().filter(n -> true).forEach(TestMain::log);
         list.parallelStream().filter(n -> n%3 == 0).forEach(TestMain::log);
         //
-        log("---------------------------------------------------------");
-        log(LocalDateTime.now().getDayOfWeek().getValue());
-        log(getWeekAndYear("2019-03-11"));
-        log("---------------------------------------------------------");
-        log("本日开始："+LocalDateTime.of(LocalDate.now(), LocalTime.MIN).toString());
-        log("本周开始："+LocalDateTime.of(LocalDate.now(), LocalTime.MIN).plusDays(0-LocalDateTime.now().getDayOfWeek().getValue()+1).toString());
-        log("本月开始："+LocalDateTime.of(LocalDate.now(), LocalTime.MIN).plusDays(0-LocalDateTime.now().getDayOfMonth()+1).toString());
-        log("本季开始："+LocalDateTime.of(LocalDate.now(), LocalTime.MIN).plusDays(0-LocalDateTime.now().getDayOfMonth()+1).toString());
-        log("本年开始："+LocalDateTime.of(LocalDate.now(), LocalTime.MIN).plusDays(0-LocalDateTime.now().getDayOfYear()+1).toString());
     }
     interface lambda {
         abstract int add(int a,int b);
