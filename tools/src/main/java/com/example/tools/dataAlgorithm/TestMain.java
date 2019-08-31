@@ -13,7 +13,6 @@ public class TestMain {
         RegionEntity r = new RegionEntity();
         r.setCode("12");
         r.setName("123");
-        r.setParentCode("fa");
         listAll.add(r);
         // 2、new一个list保存全部节点
         List<IMultiTreeNode> listNode = new ArrayList<>();
